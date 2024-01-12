@@ -1,0 +1,148 @@
+BACKEND DEVELOPER:
+    *Reglas de negocios.
+    *Validacion.
+    *Autorizacion de usuarios.
+    *Conexion a BD.
+
+
+DB ADMIN:
+    *Gestiona la BD
+        -Politicas
+        -Disposicion
+        -Seguridad
+        -Backups
+        -Replicacion
+        -Escalamiento
+        -Soporte
+
+
+SERVER ADMIN:
+    *Gestionar la seguridad en los servidores.
+
+
+
+
+!!!!------------------------- CONEXION FRONTEND CON BACKED-----------------------------!!!
+
+Mediante APIs (HTTPS): Aplications programming interfaces.
+
+Como funciona el backend: El backend es un codigo estructurado que proporciona una respuesta a una solicitud
+que ha realizado el frontend, el backend se integra por librerias, bd y codigo logico que procesa la
+informacion solicitada brindando una respuesta al frontend.
+
+
+PROTOCOLOGO HTTP:
+
+url ejemplo : (1[https:]//2[platzi.com]/3[cursos])
+1.Protocolo, la (s) en https indica security, una tecnologia innovadora.
+2.dominio de la url
+3.(path/endpoint) path, una ruta a otra parte de la vista o un endpoint si se trata de un servicio.
+
+STATUS CODE HTTP RESPONSE (Codigos de respuesta al cliente):
+1XX : INFO (102 - PROCESSING)
+2XX : SUCESS (200-OK / 201-CREATED / 204-NO CONTENT)
+3XX : REDIRECT (301-MOVED / 307-TEMPORARY / 308-PERMANENT)
+4XX : CLIENT ERROR (401-UNAUTHORIZED / 404-NOT FOUND / 409-CONFLICT)
+5XX : SERVER ERROR (500-INTERNAL / 502-BAD GATEWAY/ 504-GATEWAY TIMEOUT)
+
+
+
+!!!!-------------------------- APIs ----------------------------!!!!
+Mediante el codigo permite comunicarnos con el backend del sistema u otros sistemas.
+Cuando el cliente se dirige a la APIs esta expone unos endpoints.
+endpoints: /users , /users/create, /users/:id
+
+ejemplo: (endpoints para gestionar productos)
+
+NOTA: EL ESTANDAR A CONTINUACION ES EL ESTANDAR DE (API REST)
+
+                endpoint        /       method          /       body        /       response        /       status
+    
+VER             /products       /         GET           /       N/A         /     [{},{},...,{}]    /        200
+    
+VER             /products/:id   /         GET           /       N/A         /          [{}]         /        200
+    
+CREAR           /products       /         POST          /       {...}       /          {}           /          201
+    
+ACTUALIZAR      /products/:id   /      PUT/PATCH        /       {...}       /          {}           /          201
+    
+ELIMINAR        /products/:id   /        DELETE         /       N/A         /          True         /          201
+
+
+
+
+!!!!-------------------------- NUBE ----------------------------!!!!
+En la nube es donde se alojan los servicios, el codigo donde se realizaran las 
+peticiones por parte de los clientes, hacer request.
+
+NUBES FAMOSAS (SERVIDORES, (DATA CENTERS)):
+    Amazon (AWS)
+    DigitalOcean
+    Azure   
+    Google cloud
+
+
+DATA CENTERS: Los data centers son los lugares donde se encuentra el hardware de los
+empresas que proporcionan alojamiento de la nube.
+
+DevOps: Es el encargado de unir la parte de desarrollo con la parte de operaciones
+en un equipo de trabajo.
+
+Servidor: Se compone de cpu-ram-almacenamiento, se pueden alojar arquitecturas como IaaS, PaaS, SaaS.
+
+    *IaaS: Infraestructura como servicio.
+    *PaaS: Plataforma como servicio.
+    *SaaS: Software como servicio.
+
+
+Cookies (SOLO FUNCIONA EN NAVEGADORES): Se utilizan para guardar informacion del usuario que esta navegando en el sitio web, 
+         datos como ubicacion, idioma, user, contraseña y demas para recordar esos datos.
+
+Jason Web Token (JWT): Esta herramienta tiene la funcionalidad del token pero si funciona en aplicaciones
+                       mobiles y navegadores.
+
+
+BASES DE DATOS: Disponen de drivers especificos que permiten la conexion a diferentes lenguajes de    
+                programacion. 
+                
+                -BD RELACIONALES:  PostgreSQL, MySQL, ORACLE
+                -BD NO RELACIONES (NoSQL): mongoDB, CASSANDRA, Couchbase.
+
+
+    BD RELACIONES: Tienen en comun (SQL), que permite los frameworks aprovechen esta caracteristica
+                   y aplicar lo que se conoce como Object-Relational Mapping(ORMS), es una abstraccion
+                   de las conexiones utilizando la POO que permite facilidad en las consultas a BD.  
+         
+
+    DIGITALOCEAN-HEROKU: Se propone contratar un tercero para que sea esta entidad quien propicie
+                         la labor de ADMIN-DB en caso que no se cuente con esta persona en el equipo.
+
+
+    CONFIGURACIONES DE SERVIDOR:
+
+        Escalamiento vertical: Se paga e incrementa la capacidad de todo, facil de mantener pero costoso,
+                               y a su vez poco revertible.
+        
+        Escalamiento horizontal: Mas economico. Se configuran varios NODOS (Clouster) en paralelo y se distribuye la informacion      
+                                 que ingresa a los servidores. Es mas dificil de configurar y hay que programar
+                                 un load balancer que dirige la informacion de forma balanceada a los diferentes
+                                 servidores configurados. Lo mejor de todo es que si un NODO falla los demas quedan 
+                                 funcionando y la aplicacion no se cae, a diferencia del escalamiento vertical.
+
+                                 -Clouster: Conjunto de servidores (NODOS).
+
+                                 -Configuracion: 
+                                                *REPLICACION:
+                                                 Debe hacerse una sincronizacion de las BD alojadas en los diferentes NODOS para
+                                                 que cuando entre una peticion random la informacion fluya entre todos los servidores
+                                                 y haya una respuesta efectiva.
+
+
+                                                *COLA TAREAS:
+                                                 Se destina un NODO para la realizacion de tareas pesadas, estas tareas puestas en
+                                                 cola se ejecutaran de manera ordenada una a una sin afectar los recursos del servidor.
+
+
+
+
+    
